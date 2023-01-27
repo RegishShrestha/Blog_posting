@@ -1,27 +1,43 @@
 const express = require("express");
-
+const morgan = require("morgan");
 const app = express();
 app.set("view engine", "ejs");
 
 app.listen(3000);
 
-app.use((req, res, next) => {
-  console.log("new request made");
-  console.log("host: ", req.hostname);
-  console.log("path: ", req.path);
-  console.log("method: ", req.method);
-  next();
-});
+// these are some middlewares
+// app.use((req, res, next) => {
+//   console.log("new request made");
+//   console.log("host: ", req.hostname);
+//   console.log("path: ", req.path);
+//   console.log("method: ", req.method);
+//   next();
+// });
 
-app.use((req, res, next) => {
-  console.log("in the next middleware");
-  next();
-});
+// app.use((req, res, next) => {
+//   console.log("in the next middleware");
+//   next();
+// });
+
+// middleware & static files
+app.use(express.static("public"));
+
+app.use(morgan("dev"));
+
 app.get("/", (req, res) => {
   const blogs = [
-    { title: "regish", snippet: "lorem asdflsadfnsa fjasdfklsadl" },
-    { title: "regish", snippet: "lorem asdflsadfnsa fjasdfklsadl" },
-    { title: "regish", snippet: "lorem asdflsadfnsa fjasdfklsadl" },
+    {
+      title: "Yoshi finds eggs",
+      snippet: "Lorem ipsum dolor sit amet consectetur",
+    },
+    {
+      title: "Mario finds stars",
+      snippet: "Lorem ipsum dolor sit amet consectetur",
+    },
+    {
+      title: "How to defeat bowser",
+      snippet: "Lorem ipsum dolor sit amet consectetur",
+    },
   ];
   //   res.sendFile("./views/index.html", { root: __dirname });
   res.render("index", { title: "home", blogs });
