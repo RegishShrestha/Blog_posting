@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog Ninja | <%= title %></title>
+  </head>
+  <body>
+    <% const name="regish"%>
+    <nav>
+      <div class="site_title">
+        <p><%= name %></p>
+        <a href="/"><h1>BLog Ninja</h1></a>
+        <p>A Net Ninja site</p>
+      </div>
+      <ul>
+        <li><a href="/">Blogs</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/blog/create">New Blogs</a></li>
+      </ul>
+    </nav>
+    <div class="blog content">
+      <h2>All blogs</h2>
+      <% if(blogs.length >0){%>
+        <%blogs.foreach(blog=>{
+          %>
+        })
+      <h3></h3>
+      <p></p>
+      <%}%>
+    </div>
+  </body>
+</html>
