@@ -6,7 +6,7 @@ const Blog = require("./models/blog");
 
 // connect to mongoDB
 const dbURI =
-  "mongodb+srv://usernaame:password@nodetuts.gxyk5lo.mongodb.net/node-tuts?retryWrites=true&w=majority";
+  "mongodb+srv://netninja:1234@nodetuts.gxyk5lo.mongodb.net/node-tuts?retryWrites=true&w=majority";
 mongoose
   .connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then((result) => {
@@ -131,6 +131,15 @@ app.get("/blogs/:id", (req, res) => {
     .catch((err) => {
       console.log(err);
     });
+});
+
+app.delete("/blogs/:id", (req, res) => {
+  const id = req.params.id;
+  Blog.findByIdAndDelete(id).then((result) => {
+    res.json({ redirect: "/blogs" }).catch((err) => {
+      console.log(err);
+    });
+  });
 });
 
 app.get("/blogs/create", (req, res) => {
