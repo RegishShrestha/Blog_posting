@@ -1,4 +1,4 @@
-const express = require("express");
+﻿const express = require("express");
 const morgan = require("morgan");
 const mongoose = require("mongoose");
 const app = express();
@@ -6,7 +6,7 @@ const Blog = require("./models/blog");
 
 // connect to mongoDB
 const dbURI =
-  "mongodb+srv://netninja:1234@nodetuts.gxyk5lo.mongodb.net/node-tuts?retryWrites=true&w=majority";
+  "mongodb+srv://<username>:<password>@nodetuts.gxyk5lo.mongodb.net/node-tuts?retryWrites=true&w=majority";
 mongoose
   .connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then((result) => {
